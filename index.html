@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <script src="external/jquery/jquery.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+	<script src="js/jquery.ui.touch-punch.min.js"></script>
+    <title>Paisajes de Canarias</title>
+</head>
+
+<body>
+    <h2>Paisajes de Canarias</h2>
+    <form id="formulario">
+        <div id="nombre">
+            <label for="inputNombre">Introduzca su nombre:</label>
+            <input type="text" id="inputNombre" pattern="[a-zA-Z ]{1,100}" required>
+        </div>
+        <button type="submit">JUGAR</button>
+    </form>
+
+    <div id="dificultad">
+        <p>Escoger dificultad:</p>
+    </div>
+
+
+    <div id="juego">
+
+
+
+        <div id="mapa">
+
+            <div class="isla 1" id="1" class="ui-widget-content ui-state-default">
+                <h4 class="ui-widget-header">Tenerife</h4>
+            </div>
+            <div class="isla 2" id="2" class="ui-widget-content ui-state-default">
+                <h4 class="ui-widget-header">La Gomera</h4>
+            </div>
+            <div class="isla 3" id="3" class="ui-widget-content ui-state-default">
+                <h4 class="ui-widget-header">El Hierro</h4>
+            </div>
+            <div class="isla 4" id="4" class="ui-widget-content ui-state-default">
+                <h4 class="ui-widget-header">La Palma</h4>
+            </div>
+            <div class="isla 5" id="5" class="ui-widget-content ui-state-default">
+                <h4 class="ui-widget-header">Gran Canaria</h4>
+            </div>
+            <div class="isla 6" id="6" class="ui-widget-content ui-state-default">
+                <h4 class="ui-widget-header">Lanzarote</h4>
+            </div>
+            <div class="isla 7" id="7" class="ui-widget-content ui-state-default">
+                <h4 class="ui-widget-header">Fuerteventura</h4>
+            </div>
+        </div>
+		
+		
+        <div id="galeria">
+            <ul id="gallery" class="gallery ui-helper-clearfix">
+
+            </ul>
+        </div>
+
+		
+        <div id="dialog-confirm" title="Fin del juego?">
+            <p>¿Desea acabar la partida y ver su puntuación?</p>
+        </div>
+
+        <div id="dialog-message" title="Resultado">
+
+        </div>
+
+
+    </div>
+
+
+    <script src="js/paisajes.js"></script>
+</body>
+
+</html>
