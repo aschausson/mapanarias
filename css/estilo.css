@@ -1,5 +1,5 @@
 body{
-    
+    background-color: rgb(222, 225, 231);
 }
 
 li{
@@ -10,9 +10,8 @@ list-style-type: none;
 #juego{
     width: 96%;
     min-height: 200px;
-    background-color: lightgrey;
-    border: solid 3px grey;
     padding: 20px;
+    padding-top: 5px;
 }
 
 
@@ -29,17 +28,24 @@ list-style-type: none;
     height: 640px;
     background-image: url("../images/canarias2.png");
     z-index: 1;
+    border: solid 2px darkblue;
+    margin: 0 auto;
+    box-shadow: 5px 10px 8px #888888;
 }
 
 h2{
-	margin: 0px;
+    margin: 0px;
+    color: darkblue;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: underline
 }
 
 li{
     font-size: 0;
 }
 
-#gallery { float: center; width: 96%; min-height: 12em; border: solid 3px green; background-color: white; padding: 20px;}
+#gallery { margin: 0 auto; width: 96%; min-height: 12em; border: solid 3px darkgreen; background-color: white; padding: 20px; box-shadow: 5px 10px 8px #888888;}
   .gallery.custom-state-active { background: #eee; }
   .gallery li { float: left; height: 200px;  margin: 0 0.4em 0.4em 0; text-align: center; }
   .gallery li h5 { margin: 0 0 0.4em; cursor: move; }
@@ -54,7 +60,6 @@ li{
     float: right; 
     width: 200px; 
     height: 190px; 
-
     bottom: 155px;
     left: 360px;
 }
@@ -64,7 +69,6 @@ li{
     float: right;
     width: 170px; 
     height: 150px; 
-
     bottom: 110px;
     left: 180px;
 }
@@ -75,7 +79,6 @@ li{
     float: right;
     width: 170px; 
     height: 150px; 
-
     bottom: 10px;
     left: 0px;
 }
@@ -86,7 +89,6 @@ li{
     float: right;
     width: 170px; 
     height: 150px; 
-
     bottom: 310px;
     left: 0px;
 }
@@ -96,9 +98,8 @@ li{
     float: right;
     width: 170px; 
     height: 150px; 
- 
     bottom: 115px;
-    left: 580px;
+    left: 595px;
 }
 
 #mapa div:nth-child(6){ 
@@ -106,7 +107,6 @@ li{
     float: right;
     width: 170px; 
     height: 150px; 
-
     bottom: 420px;
     left:1000px;
 }
@@ -117,23 +117,101 @@ li{
     float: right;
     width: 170px; 
     height: 190px; 
-
     bottom: 205px;
     left: 935px;
 }
 
+.oculto{
+    display: none;
+}
+
+.bloqueo1{
+    background-color: #CBEAF1;
+    position: absolute;
+    float: right;
+    width: 245px; 
+    height: 247px; 
+    bottom: 125px;
+    left: 350px;
+}
+.bloqueo2{
+    background-color: #CBEAF1;
+    position: absolute;
+    float: right;
+    width: 170px; 
+    height: 150px; 
+    bottom: 110px;
+    left: 180px;
+}
+.bloqueo3{ 
+    background-color: #CBEAF1;
+    position: absolute;
+    float: right;
+    width: 170px; 
+    height: 150px; 
+    bottom: 10px;
+    left: 2px;
+}
+.bloqueo4{
+    background-color: #CBEAF1;
+    position: absolute;
+    float: right;
+    width: 180px; 
+    height: 150px; 
+    bottom: 310px;
+    left: 2px;
+}
+
+.bloqueo5{ 
+    background-color: #CBEAF1;
+    position: absolute;
+    float: right;
+    width: 180px; 
+    height: 160px; 
+    bottom: 105px;
+    left: 595px;
+}
+.bloqueo6{
+    background-color: #CBEAF1;
+    position: absolute;
+    float: right;
+    width: 200px; 
+    height: 195px; 
+    bottom: 430px;
+    left:1000px;
+}
 
 
+.bloqueo7{
+    background-color: #CBEAF1;
+    position: absolute;
+    float: right;
+    width: 205px; 
+    height: 235px; 
+    bottom: 195px;
+    left: 915px;
+}
 
   .isla h4 { line-height: 16px; margin: 0 0 0.4em; }
   .isla h4 .ui-icon { float: left; }
   .isla .gallery h5 { display: none; }
   .isla li{
      display: inline !important;
-
-    
   }
 
-  #dialog-confirm{
 
+  #formulario{
+      display: table;
+      vertical-align: middle;
+      background-color: aliceblue;
+      margin: 0 auto;
+      padding: 20px;
+      margin-top: 200px;
+      font-weight: bold;
+      border: solid 3px darkblue;
+      box-shadow: 5px 10px 8px #888888;
   }
+
+  .ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-close {
+    display: none;
+}

@@ -1,12 +1,4 @@
-var lugares = {
-    'tenerife': 1,
-    'gomera': 2,
-    'hierro': 3,
-    'palma': 4,
-    'grancanaria': 5,
-    'lanzarote': 6,
-    'fuerteventura': 7
-}
+
 
 var facil = 4
 var medio = 7
@@ -14,16 +6,27 @@ var experto = 9
 var dificultad = 0
 var nombre = ''
 var nimg = 0
+var minimoIslas = 4
 
-introduceNombre()
 
 
 $(document).ready(function () {
+    comienzaJuego();
+    introduceNombre()
+})
+
+function comienzaJuego(){
     $('#juego').hide()
     $('#dificultad').hide()
     $('#dialog-confirm').hide()
     $('#dialog-message').hide()
-})
+    
+    $('#gallery').empty()
+    $('div.isla li').remove()
+
+    $('.bloq').removeClass('oculto')
+    $('.isla').addClass('oculto')
+}
 
 
 $(function () {
@@ -69,8 +72,10 @@ function setDificultad() {
 
 function imagenesAleatorias() {
     var lista = []
+    var islasUsadas = []
     var isla = 0
     var zona = 0
+    var n = 0
     for (let i = 0; i < dificultad; i++) {
         var introduce = false
         while (!introduce){
@@ -82,6 +87,24 @@ function imagenesAleatorias() {
             }
         }
         $('#gallery').append('<li class="ui-widget-content ui-corner-tr"><img id="'+ isla +'" src="images/'+ isla +'/'+ zona +'.jpg" height="200px"></li>')
+        $('.bloqueo'+isla).addClass('oculto')
+        $('.isla#'+isla).removeClass('oculto')
+        if (!islasUsadas.includes(isla)){
+            islasUsadas.push(isla)
+            n++
+        }
+        
+    }
+    while (n < minimoIslas){
+        var islasOcultas = $('.isla.oculto')
+        var islasOcultasId = []
+        $(islasOcultas).each(function(){
+            islasOcultasId.push($(this).attr('id'))
+        })
+        isla = Math.floor(Math.random() * $(islasOcultasId).size())
+        $('.bloqueo'+islasOcultasId[isla]).addClass('oculto')
+        $('.isla#'+islasOcultasId[isla]).removeClass('oculto')
+        n++
     }
     nimg = dificultad
     dragdrop()
@@ -126,8 +149,13 @@ function mensajeFin() {
         $("#dialog-message").dialog({
             modal: true,
             buttons: {
-                Ok: function () {
+                "Continuar aquí": function () {
                     $(this).dialog("close");
+                },
+                "Jugar de nuevo": function () {
+                    $(this).dialog("close");
+                    comienzaJuego()
+                    setDificultad()
                 }
             }
         });
@@ -144,7 +172,7 @@ function preguntaFin() {
         width: 400,
         modal: true,
         buttons: {
-            "Jugar": function () {
+            "Seguir jugando": function () {
                 $(this).dialog("close");
             },
             'Terminar': function () {
@@ -163,22 +191,20 @@ function preguntaFin() {
 
 function dragdrop() {
 
-    // There's the gallery and the trash
-    var $gallery = $("#gallery"),
-        $trash = $(".isla");
 
-    // Let the gallery items be draggable
+    var $gallery = $("#gallery"),
+        $islaActual = $(".isla");
+
     $("li", $gallery).draggable({
-        cancel: "a.ui-icon", // clicking an icon won't initiate dragging
-        revert: "invalid", // when not dropped, the item will revert back to its initial position
+        cancel: "a.ui-icon",
+        revert: "invalid",
         containment: "document",
         helper: "clone",
         cursor: "move",
         appendTo: "#mapa"
     });
 
-    // Let the trash be droppable, accepting the gallery items
-    $trash.each(function () {
+    $islaActual.each(function () {
         $(this).droppable({
             accept: "#gallery > li",
             classes: {
@@ -187,13 +213,19 @@ function dragdrop() {
             drop: function (event, ui) {
                 deleteImage(ui.draggable, this);
                 nimg--
+                if($(ui.draggable).find('img').attr('id') == $(this).attr('id')){
+                    toastr.success('', 'Isla Correcta: +1pt')
+                }
+                else{
+                    toastr.error('', 'Isla Incorrecta: +0pts') 
+                }
                 if (nimg == 0)
                     preguntaFin()
             }
         })
     })
 
-    // Let the gallery be droppable as well, accepting items from the trash
+
     $gallery.droppable({
         accept: ".isla li",
 
@@ -204,7 +236,7 @@ function dragdrop() {
 
     function deleteImage($item, isla) {
         $item.fadeOut(function () {
-            var $list = $("ul", $trash).length;
+            var $list = $("ul", $islaActual).length;
 
             $item.appendTo(isla).fadeIn(function () {
                 $item

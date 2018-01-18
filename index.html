@@ -7,24 +7,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/estilo.css">
     <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link href="css/toastr.min.css" rel="stylesheet" type="text/css" />
     <script src="external/jquery/jquery.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-	<script src="js/jquery.ui.touch-punch.min.js"></script>
-    <title>Paisajes de Canarias</title>
+    <script src="external/jquery-ui.min.js"></script>
+    <script src="external/jquery.ui.touch-punch.min.js"></script>
+    <script src="external/toastr.min.js"></script>
+    <title>Mapanarias</title>
 </head>
 
 <body>
-    <h2>Paisajes de Canarias</h2>
+    <h2>PAISAJES DE CANARIAS</h2>
     <form id="formulario">
         <div id="nombre">
-            <label for="inputNombre">Introduzca su nombre:</label>
+            <label for="inputNombre">Introduzca su nombre de jugador:</label>
             <input type="text" id="inputNombre" pattern="[a-zA-Z ]{1,100}" required>
         </div>
         <button type="submit">JUGAR</button>
     </form>
 
-    <div id="dificultad">
-        <p>Escoger dificultad:</p>
+    <div id="dificultad" title="Escoger dificultad">
+        <p>Fácil: 4 imágenes</p>
+        <p>Medio: 7 imágenes</p>
+        <p>Experto: 9 imágenes</p>
     </div>
 
 
@@ -34,27 +38,35 @@
 
         <div id="mapa">
 
-            <div class="isla 1" id="1" class="ui-widget-content ui-state-default">
+            <div class="isla 1 oculto" id="1" class="ui-widget-content ui-state-default">
                 <h4 class="ui-widget-header">Tenerife</h4>
             </div>
-            <div class="isla 2" id="2" class="ui-widget-content ui-state-default">
+            <div class="isla 2 oculto" id="2" class="ui-widget-content ui-state-default">
                 <h4 class="ui-widget-header">La Gomera</h4>
             </div>
-            <div class="isla 3" id="3" class="ui-widget-content ui-state-default">
+            <div class="isla 3 oculto" id="3" class="ui-widget-content ui-state-default">
                 <h4 class="ui-widget-header">El Hierro</h4>
             </div>
-            <div class="isla 4" id="4" class="ui-widget-content ui-state-default">
+            <div class="isla 4 oculto" id="4" class="ui-widget-content ui-state-default">
                 <h4 class="ui-widget-header">La Palma</h4>
             </div>
-            <div class="isla 5" id="5" class="ui-widget-content ui-state-default">
+            <div class="isla 5 oculto" id="5" class="ui-widget-content ui-state-default">
                 <h4 class="ui-widget-header">Gran Canaria</h4>
             </div>
-            <div class="isla 6" id="6" class="ui-widget-content ui-state-default">
+            <div class="isla 6 oculto" id="6" class="ui-widget-content ui-state-default">
                 <h4 class="ui-widget-header">Lanzarote</h4>
             </div>
-            <div class="isla 7" id="7" class="ui-widget-content ui-state-default">
+            <div class="isla 7 oculto" id="7" class="ui-widget-content ui-state-default">
                 <h4 class="ui-widget-header">Fuerteventura</h4>
             </div>
+
+            <div class="bloq bloqueo1"></div>
+            <div class="bloq bloqueo2"></div>
+            <div class="bloq bloqueo3"></div>
+            <div class="bloq bloqueo4"></div>
+            <div class="bloq bloqueo5"></div>
+            <div class="bloq bloqueo6"></div>
+            <div class="bloq bloqueo7"></div>
         </div>
 		
 		
